@@ -106,7 +106,7 @@ export default function Chat() {
                           <div className="grid flex-1 auto-rows-min gap-0.5">
                             <div className="text-sm text-black font-light">Harmless</div>
                             <div className="flex items-baseline gap-1 text-xl tabular-nums leading-none text-[#4CB140] font-black">
-                              {m.data.vtReport.data.attributes.last_analysis_stats.harmless}
+                              {m.data?.vtReport.data.attributes.last_analysis_stats.harmless}
                             </div>
                           </div>
                           <div className="grid flex-1 auto-rows-min gap-0.5">

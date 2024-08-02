@@ -95,8 +95,8 @@ export async function POST(req: Request) {
 
                 gnTagMetadata = await gnTags.json()
                 if (gnReport.tags) {
-                  tagSummaries = await Promise.all(gnReport.tags.map(async (tag) => {
-                    const tagData = gnTagMetadata.metadata.find(meta => meta.name === tag);
+                  tagSummaries = await Promise.all(gnReport.tags.map(async (tag: any) => {
+                    const tagData = gnTagMetadata.metadata.find((meta: { name: any; }) => meta.name === tag);
                     if (tagData) {
                       return {
                         tag,
@@ -183,7 +183,7 @@ async function generateTagSummary(tagData: any) {
   return response.choices[0].message;
 }
 
-async function generateConfidenceScore(vtReport, gnReport, gnSupReport) {
+async function generateConfidenceScore(vtReport: { data: { attributes: { last_analysis_stats: { malicious: any; suspicious: any; harmless: any; undetected: any; }; }; }; }, gnReport: { classification: any; }, gnSupReport: { noise: any; riot: any; }) {
   const prompt = `
     Based on the following security analysis data, generate a confidence score (between 0 and 1) for the IP address being malicious, so the format must be score_justification:
 
