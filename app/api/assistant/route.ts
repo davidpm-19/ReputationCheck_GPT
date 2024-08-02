@@ -171,7 +171,6 @@ async function generateTagSummary(tagData: any) {
     Intention: ${tagData.intention}
     Description: ${tagData.description}
     References: ${tagData.references.join(", ")}
-
     Summary:
   `;
 
