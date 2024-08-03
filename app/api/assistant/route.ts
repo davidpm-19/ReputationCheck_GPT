@@ -1,5 +1,6 @@
 import { AssistantResponse } from 'ai';
 import OpenAI from 'openai';
+
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY || '',
 });
@@ -10,20 +11,16 @@ let gnReport: any = null
 let gnSupReport: any = null
 let gnTagMetadata: any = null
 let tagSummaries: any = null
-// Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
 
 export async function POST(req: Request) {
-  // Parse the request body
   const input: {
     threadId: string | null;
     message: string;
   } = await req.json();
 
-  // Create a thread if needed
   const threadId = input.threadId ?? (await openai.beta.threads.create({})).id;
 
-  // Add a message to the thread
   const createdMessage = await openai.beta.threads.messages.create(threadId, {
     role: 'user',
     content: input.message,
@@ -32,7 +29,6 @@ export async function POST(req: Request) {
   return AssistantResponse(
     { threadId, messageId: createdMessage.id },
     async ({ forwardStream, sendDataMessage }) => {
-      // Run the assistant on the thread
       const runStream = openai.beta.threads.runs.stream(
         threadId, {
         assistant_id:
@@ -42,10 +38,8 @@ export async function POST(req: Request) {
           })(),
       });
 
-      // forward run status would stream message deltas
       let runResult = await forwardStream(runStream);
 
-      // status can be: queued, in_progress, requires_action, cancelling, cancelled, failed, completed, or expired
       while (
         runResult?.status === 'requires_action' &&
         runResult.required_action?.type === 'submit_tool_outputs'
@@ -106,10 +100,10 @@ export async function POST(req: Request) {
                       return { tag, summary: 'No metadata available' };
                     }
                   }));
-                }else{
+                } else {
                   tagSummaries = ''
                 }
-                
+
 
                 confidenceScore = await generateConfidenceScore(vtReport, gnReport, gnSupReport);
 
@@ -127,16 +121,6 @@ export async function POST(req: Request) {
                 return {
                   tool_call_id: toolCall.id,
                   output: ``
-                };
-              }
-
-              case 'getRoomTemperature': {
-                const tag = parameters.tag_name
-                  
-
-                return {
-                  tool_call_id: toolCall.id,
-                  output: tag.toString(),
                 };
               }
 
