@@ -56,9 +56,9 @@ export default function Chat() {
   };
 
   return (
-    <div className='flex justify-center items-center p-32'>
-      <div className="flex flex-col w-full stretch">
-        <form onSubmit={handleSubmit} className="top-0 w-full p-2 mb-8 border border-gray-300 rounded shadow-xl bg-white flex justify-between">
+    <div className='flex justify-center items-center p-8 md:p-16 lg:p-32 xl:p-32'>
+      <div className="flex flex-col w-full stretch items-center">
+        <form onSubmit={handleSubmit} id='sub-form' className="top-0 w-full p-2 mb-8 border border-gray-300 rounded shadow-xl bg-white flex justify-between items-center">
           <Input
             value={input}
             placeholder="Enter an IP address..."
@@ -68,25 +68,30 @@ export default function Chat() {
           <Button
             type="submit"
             disabled={status !== 'awaiting_message'}
-            className="bg-black text-white hover:bg-gray-800 hover:scale-110 transition-all duration-500 rounded">
+            className="bg-black text-white hover:bg-gray-800 hover:scale-110 transition-all duration-500 rounded max-[412px]:hidden">
             Analyze
           </Button>
         </form>
+        <Button
+          form='sub-form'
+          type="submit"
+          disabled={status !== 'awaiting_message'}
+          className="bg-black text-white hover:bg-gray-800 hover:animate-pulse transition-all duration-500 rounded hidden max-[412px]:block w-full">
+          Analyze
+        </Button>
         {messages.slice().reverse().map((m: Message) => (
           <div
             key={m.id}
-            className="whitespace-pre-wrap w-full"
+            className="whitespace-pre-wrap w-full flex items-center"
           >
             {m.role === 'data' && (
               <>
                 <div className="chart-wrapper mx-auto flex max-w-6xl flex-col flex-wrap items-start justify-center gap-6 p-6 sm:flex-row sm:p-8">
-                  <div className="grid w-full gap-6 sm:grid-cols-2 lg:max-w-[22rem] lg:grid-cols-1 xl:max-w-[20rem]">
-                    <Card
-                      className="max-w-xs" x-chunk="charts-01-chunk-5"
-                    >
+                  <div className="grid w-full gap-6 sm:grid-cols-2 lg:max-w-[22rem] lg:grid-cols-1 xl:max-w-[20rem] min-w-[20rem]">
+                    <Card>
                       <CardTitle className="flex gap-4 px-4 pt-4 text-xl">Security vendors' reports</CardTitle>
                       <CardDescription className="flex gap-4 px-4 pt-2">
-                        
+
                       </CardDescription>
                       <CardContent className="flex gap-4 p-4">
                         <div className="grid items-center gap-2">
@@ -181,9 +186,7 @@ export default function Chat() {
                         </ChartContainer>
                       </CardContent>
                     </Card>
-                    <Card
-                      className="max-w-xs" x-chunk="charts-01-chunk-2"
-                    >
+                    <Card>
                       <CardHeader>
                         <CardTitle className='text-xl'>Tags</CardTitle>
                         <CardDescription>
@@ -205,10 +208,8 @@ export default function Chat() {
                       </CardContent>
                     </Card>
                   </div>
-                  <div className="grid w-full flex-1 gap-6 lg:max-w-[20rem]">
-                    <Card
-                      className="max-w-xs" x-chunk="charts-01-chunk-2"
-                    >
+                  <div className="grid w-full flex-1 gap-6 lg:max-w-[20rem] min-w-[20rem]">
+                    <Card>
                       <CardHeader>
                         <CardTitle className='text-xl'>Malicious Score</CardTitle>
                         <CardDescription>
@@ -273,11 +274,9 @@ export default function Chat() {
                         </div>
                       </CardContent>
                     </Card>
-                    <Card
-                      className="max-w-xs" x-chunk="charts-01-chunk-2"
-                    >
+                    <Card>
                       <CardHeader>
-                        <CardTitle className ='text-xl'>Want to know more?</CardTitle>
+                        <CardTitle className='text-xl'>Want to know more?</CardTitle>
                         <CardDescription>
                           Take a look at the full reports
                         </CardDescription>
@@ -292,7 +291,7 @@ export default function Chat() {
                       </CardContent>
                     </Card>
                   </div>
-                  <div className="grid w-full flex-1 gap-6 lg:max-w-[20rem]">
+                  <div className="grid w-full flex-1 gap-6 lg:max-w-[20rem] min-w-[20rem]">
                     <Card
                       className="max-w-xs" x-chunk="charts-01-chunk-2"
                     >
@@ -333,9 +332,9 @@ export default function Chat() {
                       <CardContent className="grid gap-1">
                         <div className="grid auto-rows-min gap-2">
                           <div className={`flex flex-col items-start gap-2 text-xl font-normal tabular-nums leading-none`}>
-                            {m.data.gnReport.metadata && m.data.gnReport.metadata.tor && (<div className='text-wrap flex items-center text-sm'>{<SiTorbrowser className={`text-xl text-[#4CB140]`}/>} IP recognized as a tor exit node</div>) || (<div className='text-wrap flex items-center text-sm'><SiTorbrowser className={`text-xl text-[#807c7c]`}/> IP recognized as a TOR exit node</div>)}
-                            <div className='text-wrap flex items-center text-sm'>{<SiOpenvpn className={`text-xl ${m.data.gnReport.vpn ? `text-[#4CB140]` : `text-[#807c7c]`}`}/>} IP {m.data.gnReport.vpn ? "using" : "not using"} a VPN</div>
-                            <div className='text-wrap flex items-center text-sm'>{<FaRobot className={`text-xl ${m.data.gnReport.bot ? `text-[#4CB140]` : `text-[#807c7c]`}`}/>} IP {m.data.gnReport.bot ? "recognized" : "not recognized"} as BOT</div>
+                            {m.data.gnReport.metadata && m.data.gnReport.metadata.tor && (<div className='text-wrap flex items-center text-sm'>{<SiTorbrowser className={`text-xl text-[#4CB140]`} />} IP recognized as a tor exit node</div>) || (<div className='text-wrap flex items-center text-sm'><SiTorbrowser className={`text-xl text-[#807c7c]`} /> IP recognized as a TOR exit node</div>)}
+                            <div className='text-wrap flex items-center text-sm'>{<SiOpenvpn className={`text-xl ${m.data.gnReport.vpn ? `text-[#4CB140]` : `text-[#807c7c]`}`} />} IP {m.data.gnReport.vpn ? "using" : "not using"} a VPN</div>
+                            <div className='text-wrap flex items-center text-sm'>{<FaRobot className={`text-xl ${m.data.gnReport.bot ? `text-[#4CB140]` : `text-[#807c7c]`}`} />} IP {m.data.gnReport.bot ? "recognized" : "not recognized"} as BOT</div>
                           </div>
                         </div>
                       </CardContent>
