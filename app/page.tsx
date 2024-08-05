@@ -47,7 +47,7 @@ export default function Chat() {
             type="submit"
             disabled={status !== 'awaiting_message'}
             className="bg-black text-white hover:bg-gray-800 hover:scale-110 transition-all duration-500 rounded max-[412px]:hidden">
-            Analyze
+            {status !== 'awaiting_message' ? "Analyzing" : "Analyze"}
           </Button>
         </form>
         <Button
@@ -55,7 +55,7 @@ export default function Chat() {
           type="submit"
           disabled={status !== 'awaiting_message'}
           className="bg-black text-white hover:bg-gray-800 hover:animate-pulse transition-all duration-500 rounded hidden max-[412px]:block w-full">
-          Analyze
+          {status !== 'awaiting_message' ? "Analyzing" : "Analyze"}
         </Button>
         {messages.slice().reverse().map((m: Message) => (
           <div
