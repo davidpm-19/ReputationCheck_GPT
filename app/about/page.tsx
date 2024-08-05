@@ -27,7 +27,7 @@ export default function About() {
             <Separator className="mb-2 w-full border-2 border-[#1E1E1E]" />
 
             <div className="w-full flex gap-4 flex-col lg:flex-row">
-                <Card className="w-full lg:w-[70%] h-fit" x-chunk="charts-01-chunk-0">
+                <Card className="w-full lg:w-[70%] h-fit">
                     <CardContent>
                         <div className=''>
                             <div className="flex flex-col w-full stretch border-">
@@ -63,11 +63,11 @@ export default function About() {
                         </div>
                     </CardContent>
                 </Card>
-                <Card className="w-full lg:w-[30%] h-fit" x-chunk="charts-01-chunk-1">
+                <Card className="w-full lg:w-[30%] h-fit">
                     <CardContent>
                         <div className=''>
                             <div className="flex flex-col w-full">
-                                <Accordion type="multiple" collapsible>
+                                <Accordion type="multiple">
                                     <AccordionItem value="item-1">
                                         <AccordionTrigger className='flex text-start'>Languages, Libs and Frameworks</AccordionTrigger>
                                         <AccordionContent className="AccordionContent flex flex-col gap-3">
@@ -219,7 +219,7 @@ export default function About() {
                     <div className='flex flex-col gap-2'>
                         <h1 className='text-md font-semibold'>Greynoise Tags</h1>
                         <h2 className='text-sm font-light'>Diferent tags related to the IP, according to Greynoise, and an AI description of what they mean</h2>
-                        <Card className="w-full h-fit" x-chunk="charts-01-chunk-2">
+                        <Card className="w-full h-fit">
                             <CardHeader>
                                 <CardTitle className='text-xl'>Tags</CardTitle>
                                 <CardDescription>
@@ -239,7 +239,7 @@ export default function About() {
                     <div className='flex flex-col gap-2'>
                         <h1 className='text-md font-semibold'>Complete Reports</h1>
                         <h2 className='text-sm font-light'>Link to the full reports on both virustotal and greynoise</h2>
-                        <Card className="w-full h-fit" x-chunk="charts-01-chunk-2">
+                        <Card className="w-full h-fit">
                             <CardHeader>
                                 <CardTitle className='text-xl'>Want to know more?</CardTitle>
                                 <CardDescription>
@@ -260,7 +260,7 @@ export default function About() {
                 <div className='flex flex-col gap-2 lg:w-[20%]'>
                     <h1 className='text-md font-semibold'>Malicious/Risk Score</h1>
                     <h2 className='text-sm font-light'>Calculated Score using GPT4 and the obtained reports</h2>
-                    <Card className="h-fit" x-chunk="charts-01-chunk-2">
+                    <Card className="h-fit">
                         <CardHeader>
                             <CardTitle className='text-xl'>Malicious Score</CardTitle>
                             <CardDescription>
@@ -431,53 +431,53 @@ export default function About() {
                 <div className='flex flex-col gap-2 lg:w-[20%]'>
                     <h1 className='text-md font-semibold'>Virustotal Quick Scan</h1>
                     <h2 className='text-sm font-light'>Results of greynoise quick-scan</h2>
-                <Card className="h-fit" x-chunk="charts-01-chunk-2">
-                    <CardHeader>
-                        <CardTitle>Quick Analysis</CardTitle>
-                        <CardDescription>
-                            Results from the quick analysis of IP
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent className="grid gap-4">
-                        <Table>
-                            <TableHeader>
-                                <TableRow>
-                                    <TableHead>Noise</TableHead>
-                                    <TableHead>RIOT</TableHead>
-                                    <TableHead>Code</TableHead>
-                                </TableRow>
-                            </TableHeader>
-                            <TableBody>
-                                <TableRow>
-                                    <TableCell> Yes / No </TableCell>
-                                    <TableCell> Yes / No </TableCell>
-                                    <TableCell> Code </TableCell>
-                                </TableRow>
-                            </TableBody>
-                        </Table>
-                    </CardContent>
-                </Card>
+                    <Card className="h-fit">
+                        <CardHeader>
+                            <CardTitle>Quick Analysis</CardTitle>
+                            <CardDescription>
+                                Results from the quick analysis of IP
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent className="grid gap-4">
+                            <Table>
+                                <TableHeader>
+                                    <TableRow>
+                                        <TableHead>Noise</TableHead>
+                                        <TableHead>RIOT</TableHead>
+                                        <TableHead>Code</TableHead>
+                                    </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                    <TableRow>
+                                        <TableCell> Yes / No </TableCell>
+                                        <TableCell> Yes / No </TableCell>
+                                        <TableCell> Code </TableCell>
+                                    </TableRow>
+                                </TableBody>
+                            </Table>
+                        </CardContent>
+                    </Card>
                 </div>
                 <div className='flex flex-col gap-2 lg:w-[20%]'>
-                <h1 className='text-md font-semibold'>Bot, Tor or VPN</h1>
+                    <h1 className='text-md font-semibold'>Bot, Tor or VPN</h1>
                     <h2 className='text-sm font-light'>Display if the IP have been found using or being under any of the tools</h2>
-                <Card className="h-fit" x-chunk="charts-01-chunk-2">
-                    <CardHeader>
-                        <CardTitle>TOR, BOT or VPN?</CardTitle>
-                        <CardDescription>
-                            Tor Node, VPN or BOT identification
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent className="grid gap-1">
-                        <div className="grid auto-rows-min gap-2">
-                            <div className={`flex flex-col items-start gap-2 text-xl font-normal tabular-nums leading-none`}>
-                                <div className='text-wrap flex items-center text-sm gap-2'><SiTorbrowser className={`text-xl text-[#4CB140]`} /> IP recognized as a tor exit node</div>
-                                <div className='text-wrap flex items-center text-sm gap-2'><SiOpenvpn className={`text-xl text-[#4CB140]`} /> IP using a VPN</div>
-                                <div className='text-wrap flex items-center text-sm gap-2'><FaRobot className={`text-xl text-[#807c7c]`} /> IP not recognized as BOT</div>
+                    <Card className="h-fit">
+                        <CardHeader>
+                            <CardTitle>TOR, BOT or VPN?</CardTitle>
+                            <CardDescription>
+                                Tor Node, VPN or BOT identification
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent className="grid gap-1">
+                            <div className="grid auto-rows-min gap-2">
+                                <div className={`flex flex-col items-start gap-2 text-xl font-normal tabular-nums leading-none`}>
+                                    <div className='text-wrap flex items-center text-sm gap-2'><SiTorbrowser className={`text-xl text-[#4CB140]`} /> IP recognized as a tor exit node</div>
+                                    <div className='text-wrap flex items-center text-sm gap-2'><SiOpenvpn className={`text-xl text-[#4CB140]`} /> IP using a VPN</div>
+                                    <div className='text-wrap flex items-center text-sm gap-2'><FaRobot className={`text-xl text-[#807c7c]`} /> IP not recognized as BOT</div>
+                                </div>
                             </div>
-                        </div>
-                    </CardContent>
-                </Card>
+                        </CardContent>
+                    </Card>
                 </div>
             </div>
         </div>

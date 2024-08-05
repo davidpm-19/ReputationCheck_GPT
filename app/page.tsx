@@ -1,47 +1,25 @@
 'use client';
 
 import { useAssistant, Message } from 'ai/react';
+
+
 import Link from 'next/link';
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
+
+
 import { BsInfoSquare } from "react-icons/bs";
 import { SiTorbrowser, SiOpenvpn } from "react-icons/si";
 import { FaRobot } from "react-icons/fa6";
 
-import {
-  Bar,
-  BarChart,
-  LabelList,
-  PolarAngleAxis,
-  RadialBar,
-  RadialBarChart,
-  XAxis,
-  YAxis,
-} from "recharts"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import {
-  ChartContainer,
-} from "@/components/ui/chart"
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card"
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
+
+import { Badge } from "@/components/ui/badge"
+import { Bar, BarChart, LabelList, PolarAngleAxis, RadialBar, RadialBarChart, XAxis, YAxis } from "recharts"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { ChartContainer } from "@/components/ui/chart"
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+
 
 export default function Chat() {
   const { status, messages, input, submitMessage, handleInputChange } = useAssistant({ api: '/api/assistant' });
@@ -82,7 +60,7 @@ export default function Chat() {
         {messages.slice().reverse().map((m: Message) => (
           <div
             key={m.id}
-            className="whitespace-pre-wrap w-full flex items-center"
+            className="whitespace-pre-wrap w-full flex items-center justify-center"
           >
             {m.role === 'data' && (
               <>
