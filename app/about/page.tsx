@@ -31,7 +31,7 @@ export default function About() {
                     <CardContent>
                         <div className=''>
                             <div className="flex flex-col w-full stretch border-">
-                                <Accordion type="multiple" collapsible>
+                                <Accordion type="multiple">
                                     <AccordionItem value="item-1">
                                         <AccordionTrigger>What is RepCheck?</AccordionTrigger>
                                         <AccordionContent className="AccordionContent">
@@ -45,7 +45,7 @@ export default function About() {
                                         </AccordionContent>
                                     </AccordionItem>
                                     <AccordionItem value="item-3">
-                                        <AccordionTrigger>Is it complete?</AccordionTrigger>
+                                        <AccordionTrigger>Is it finished?</AccordionTrigger>
                                         <AccordionContent className="AccordionContent">
                                             No. The idea is to expand RepCheck for URLs, Mails and files/hashes, that's why the assistant is perfect as it will automatically trigger functions based on the user input, also important to point that it requires more training to improve the accuracy so it's important to check the reports if having doubts about the results.
                                         </AccordionContent>
