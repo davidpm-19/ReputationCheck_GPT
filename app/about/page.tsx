@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { BsInfoSquare } from "react-icons/bs";
 import { SiTorbrowser, SiOpenvpn } from "react-icons/si";
 import { FaRobot } from "react-icons/fa6";
+import { ThumbsDown, ThumbsUp } from 'lucide-react';
 
 
 import { Badge } from "@/components/ui/badge"
@@ -257,7 +258,8 @@ export default function About() {
                         </Card>
                     </div>
                 </div>
-                <div className='flex flex-col gap-2 lg:w-[20%]'>
+                <div className='lg:w-[20%] flex flex-col gap-4'>
+                <div className='flex flex-col gap-2 '>
                     <h1 className='text-md font-semibold'>Malicious/Risk Score</h1>
                     <h2 className='text-sm font-light'>Calculated Score using GPT4 and the obtained reports</h2>
                     <Card className="h-fit">
@@ -428,6 +430,28 @@ export default function About() {
                         </CardContent>
                     </Card>
                 </div>
+                <div className='flex flex-col gap-2 '>
+                <h1 className='text-md font-semibold'>Community Score</h1>
+                <h2 className='text-sm font-light'>Extracted from Virustotal community votes towards an specific IP</h2>
+                <Card>
+                      <CardHeader>
+                        <CardTitle className='text-xl'>Community Score</CardTitle>
+                        <CardDescription>
+                          Virustotal Community Score
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent className="grid gap-4">
+                        <div className="grid auto-rows-min gap-2">
+                          <div className={`flex flex-col items-start gap-2 text-xl font-normal tabular-nums leading-none`}>
+                          <div className='flex items-center gap-2'><ThumbsUp className='text-[#4CB140]'/><span>Community Score: 523</span></div>
+                          <div className='flex items-center gap-2'><ThumbsDown className='text-[#C9190B]'/><span>Community Score: -4 </span></div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                </div>
+                </div>
+                
                 <div className='flex flex-col gap-2 lg:w-[20%]'>
                     <h1 className='text-md font-semibold'>Virustotal Quick Scan</h1>
                     <h2 className='text-sm font-light'>Results of greynoise quick-scan</h2>

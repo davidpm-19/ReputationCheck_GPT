@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { BsInfoSquare } from "react-icons/bs";
 import { SiTorbrowser, SiOpenvpn } from "react-icons/si";
 import { FaRobot } from "react-icons/fa6";
+import { ThumbsDown, ThumbsUp } from 'lucide-react';
 
 
 import { Badge } from "@/components/ui/badge"
@@ -254,6 +255,21 @@ export default function Chat() {
                     </Card>
                     <Card>
                       <CardHeader>
+                        <CardTitle className='text-xl'>Community Score</CardTitle>
+                        <CardDescription>
+                          Virustotal Community Score
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent className="grid gap-4">
+                        <div className="grid auto-rows-min gap-2">
+                          <div className={`flex flex-col items-start gap-2 text-xl font-normal tabular-nums leading-none`}>
+                          <div className='flex items-center gap-2'>{m.data.vtReport.data.attributes.reputation > 0 && (<><ThumbsUp className='text-[#4CB140]'/><span>Community Score: {m.data.vtReport.data.attributes.reputation}</span></>) || m.data.vtReport.data.attributes.reputation < 0 && (<><ThumbsDown className='text-[#C9190B]'/><span>Community Score: {m.data.vtReport.data.attributes.reputation}</span></>)}</div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                    <Card>
+                      <CardHeader>
                         <CardTitle className='text-xl'>Want to know more?</CardTitle>
                         <CardDescription>
                           Take a look at the full reports
@@ -310,8 +326,18 @@ export default function Chat() {
                       <CardContent className="grid gap-1">
                         <div className="grid auto-rows-min gap-2">
                           <div className={`flex flex-col items-start gap-2 text-xl font-normal tabular-nums leading-none`}>
-                            {m.data.gnReport.metadata && m.data.gnReport.metadata.tor && (<div className='text-wrap flex items-center text-sm'>{<SiTorbrowser className={`text-xl text-[#4CB140]`} />} IP recognized as a tor exit node</div>) || (<div className='text-wrap flex items-center text-sm'><SiTorbrowser className={`text-xl text-[#807c7c]`} /> IP recognized as a TOR exit node</div>)}
-                            <div className='text-wrap flex items-center text-sm'>{<SiOpenvpn className={`text-xl ${m.data.gnReport.vpn ? `text-[#4CB140]` : `text-[#807c7c]`}`} />} IP {m.data.gnReport.vpn ? "using" : "not using"} a VPN</div>
+                            {(m.data.gnReport.metadata && m.data.gnReport.metadata.tor) ||
+                              (m.data.vtReport.data.attributes.tags && m.data.vtReport.data.attributes.tags.includes('tor')) ? (
+                              <div className='text-wrap flex items-center text-sm'>
+                                <SiTorbrowser className={`text-xl text-[#4CB140]`} /> IP recognized as a tor exit node
+                              </div>
+                            ) : (
+                              <div className='text-wrap flex items-center text-sm'>
+                                <SiTorbrowser className={`text-xl text-[#807c7c]`} /> IP not recognized as a TOR exit node
+                              </div>
+                            )}
+
+                            <div className='text-wrap flex items-center text-sm'>{<SiOpenvpn className={`text-xl ${m.data.gnReport.vpn ? `text-[#4CB140]` : `text-[#807c7c]`}`} />} IP {m.data.gnReport.vpn ? "associated" : "not associated"} to a VPN</div>
                             <div className='text-wrap flex items-center text-sm'>{<FaRobot className={`text-xl ${m.data.gnReport.bot ? `text-[#4CB140]` : `text-[#807c7c]`}`} />} IP {m.data.gnReport.bot ? "recognized" : "not recognized"} as BOT</div>
                           </div>
                         </div>
