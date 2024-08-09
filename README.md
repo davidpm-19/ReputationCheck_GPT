@@ -2,6 +2,9 @@
 
 Welcome to the RepCheck project! This tool leverages VirusTotal and GreyNoise APIs to provide a comprehensive reputation analysis of IP addresses.
 
+> [!CAUTION]
+> My OpenAI is in Usage tier 1 so requests are limited, same with Virustotal with the free API
+
 ## Introduction
 
 RepCheck is designed to help users analyze the reputation of IP addresses using data from VirusTotal and GreyNoise. By combining the threat intelligence from both sources, this tool provides a more accurate and comprehensive assessment of potential threats associated with an IP address.
