@@ -40,7 +40,7 @@ export default function Chat() {
         <form onSubmit={handleSubmit} id='sub-form' className="top-0 w-full p-2 mb-8 border border-gray-300 rounded shadow-xl bg-white flex justify-between items-center">
           <Input
             value={input}
-            placeholder="Enter an IP address..."
+            placeholder="Analyze risk of 94.102.51.15..."
             onChange={handleInputChangeWithValidation}
             disabled={status !== 'awaiting_message'}
             className="w-[95%] p-2 rounded-none focus-visible:ring-0 focus-visible:ring-offset-0 border-0" />
