@@ -2,8 +2,8 @@
 
 Welcome to the RepCheck project! This tool leverages VirusTotal and GreyNoise APIs to provide a comprehensive reputation analysis of IP addresses.
 
-> [!CAUTION]
-> My OpenAI is in Usage tier 1 so requests are limited, same with Virustotal with the free API
+> [!WARNING]
+> Due to costs of OpenAI API usage and the end of GreyNosie Enterprise Trial Version I disabled the access to the tool until I figure how to proceed
 
 ## Introduction
 
@@ -37,7 +37,7 @@ Once the reports are received and the AI Model finishes analyzing the reports an
 - **File Analysis**: Analyze File by checking hash reputation, if filename has been reported on known attacks or code analyzer if the uploaded file contains non compiled code
 
 ## Unlikely or Future Feature Ideas 
-- **Deepfake Analysis**: Voice, Pictures or Videos deepfakes are a rising menace in our world and most of the countermeasures we have for them are human-based, and we know how any human detection tends to be bypassed with time.
-- **Community**: Knowing what other scans report as malicious may be beneficial, sharing knowledge may be benefficial for all users
-- **Tool Communication**: As a cybersec tool RepCheck sill have an API to be called from a range of tools like Siems, XDR, EDR, Soars ... 
+- **Deepfake Analysis**: Voice, Pictures or Videos deepfakes are a rising menace in our world and most of the countermeasures or detections for it are human-based.
+- **Community**: Knowing what other scans report as malicious may be beneficial for all of us.
+- **Tool Communication**: As a cybersec tool RepCheck should implement an API to be called from a range of tools to gather the information
 
