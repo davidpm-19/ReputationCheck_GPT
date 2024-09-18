@@ -27,7 +27,7 @@ Replace `<IP_ADDRESS>` with the IP address to analyze.
 
 Once the reports are received and the AI Model finishes analyzing the reports and calculates a score and generates some descriptions a block structure of cards will show information related to IP
 
-![example](https://github.com/user-attachments/assets/f0e4d492-6154-439d-8c98-b161daf951fe)
+![example](https://githubreadme.s3.eu-north-1.amazonaws.com/maliciousExample.png)
 
 ## Next Features
 
